@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios  from 'axios';
 
 const token=process.env.TOKEN;
 const version=process.env.VERSION;
