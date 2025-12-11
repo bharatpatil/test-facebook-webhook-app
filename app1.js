@@ -4,6 +4,9 @@ const {
   textMesssgeCheck
 } = require('./utils/messageValidation');
 
+const { sendTextMessage, sendTypingIndicator } = require('../util/apiHandler');
+
+
 // Import Express.js
 const express = require('express');
 
