@@ -4,6 +4,28 @@ const token=process.env.TOKEN;
 const version=process.env.VERSION;
 const phone_no_id=process.env.PHONE_NO_ID;
 
+//mark as read and typing indicator
+export async function sendTypingIndicator(messageId) {
+  try {
+    await axios.post(`https://graph.facebook.com/${version}/${phone_no_id}/messages?access_token=${token}`, {
+      messaging_product: "whatsapp",
+      status: "read",
+      message_id: messageId,
+      typing_indicator: {
+        type: "text"
+      }
+    }, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return true;
+  } catch (error) {
+    console.error("Error sending typing indicator:", error);
+    return false;
+  }
+}
 
 //# This is for sending Text Messages
 export async function sendTextMessage(to,msg){
